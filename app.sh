@@ -34,8 +34,8 @@ if [ -n "${USERSPERCHANNEL}" ]; then
   sed -e "s/^;usersperchannel=0$/usersperchannel=${USERSPERCHANNEL}/" -i /etc/mumble-server.ini
 fi
 
-if [ "${OPUSALWAYS}" == "1" ]; then
-  sed -e "s/^;opusthreshold=100$/opusthreshold=0/" -i /etc/mumble-server.ini
+if [ -n "${OPUSTHRESHOLD}" ]; then
+  sed -e "s/^;opusthreshold=100$/opusthreshold=${OPUSTHRESHOLD}/" -i /etc/mumble-server.ini
 fi
 
 # We force foreground mode to ensure that murmurd has a chance to close its database properly
