@@ -83,6 +83,26 @@ suggestVersion expects the version in the format X.X.X
 ```
 -e SUGGESTVERSION=1.2.4
 ```
+Setting this to "true" will alert any user who does not have positional audio
+enabled that the server administrators recommend enabling it. Setting it to
+"false" will have the opposite effect - if you do not care whether the user
+enables positional audio or not, leave it blank. The message will appear in
+the log window upon connection, but only if the user's settings do not match
+what the server requests.
+```
+-e SUGGESTPOSITIONAL=true
+-e SUGGESTPOSITIONAL=false
+```
+Setting this to "true" will alert any user who does not have Push-To-Talk
+enabled that the server administrators recommend enabling it. Setting it to
+"false" will have the opposite effect - if you do not care whether the user
+enables PTT or not, set it to blank. The message will appear in the log
+window upon connection, but only if the user's settings do not match what the
+server requests.
+```
+-e SUGGESTPUSHTOTALK=true
+-e SUGGESTPUSHTOTALK=false
+```
 
 ## Volume Options
 Save your mumble-server.sqlite in /data
@@ -91,7 +111,7 @@ Save your mumble-server.sqlite in /data
 ```
 
 ## Run the image
-Run the image with unrestricted opus support and suggested version
+Run the image with unrestricted opus support and a suggested version
 ```
 docker run -d \
 -e "WELCOMETEXT=Mumble Server Hosted by example.com" \

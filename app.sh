@@ -62,6 +62,14 @@ if [ -n "${SUGGESTVERSION}" ]; then
   sed -e "s/^;suggestVersion=$/suggestVersion=${SUGGESTVERSION}/" -i /etc/mumble-server.ini
 fi
 
+if [ -n "${SUGGESTPOSITIONAL}" ]; then
+  sed -e "s/^;suggestPositional=$/suggestPositional=${SUGGESTPOSITIONAL}/" -i /etc/mumble-server.ini
+fi
+
+if [ -n "${SUGGESTPUSHTOTALK}" ]; then
+  sed -e "s/^;suggestPushToTalk=$/suggestPushToTalk=${SUGGESTPUSHTOTALK}/" -i /etc/mumble-server.ini
+fi
+
 # We force foreground mode to ensure that murmurd has a chance to close its database properly
 # docker logs mumble will show logs
 chown -R mumble-server.mumble-server /data
