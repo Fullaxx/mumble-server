@@ -72,6 +72,10 @@ Only clients which have a registered certificate are allowed to connect
 ```
 -e CERTREQUIRED=true
 ```
+If disabled, clients will not be sent information about the server version and OS
+```
+-e SENDVERSION=false
+```
 
 ## Volume Options
 Save your mumble-server.sqlite in /data
