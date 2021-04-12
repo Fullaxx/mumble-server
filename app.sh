@@ -42,6 +42,14 @@ if [ -n "${OPUSTHRESHOLD}" ]; then
   sed -e "s/^;opusthreshold=100$/opusthreshold=${OPUSTHRESHOLD}/" -i /etc/mumble-server.ini
 fi
 
+if [ -n "${CHANNELNESTINGLIMIT}" ]; then
+  sed -e "s/^;channelnestinglimit=10$/channelnestinglimit=${CHANNELNESTINGLIMIT}/" -i /etc/mumble-server.ini
+fi
+
+if [ -n "${CHANNELCOUNTLIMIT}" ]; then
+  sed -e "s/^;channelcountlimit=1000$/channelcountlimit=${CHANNELCOUNTLIMIT}/" -i /etc/mumble-server.ini
+fi
+
 # We force foreground mode to ensure that murmurd has a chance to close its database properly
 # docker logs mumble will show logs
 chown -R mumble-server.mumble-server /data

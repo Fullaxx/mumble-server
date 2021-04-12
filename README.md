@@ -30,7 +30,7 @@ but occasionally one will get stuck on the server \
 The timeout setting will cause a periodic check of all clients \
 who haven't communicated with the server in this many seconds \
 causing zombie clients to be disconnected
-Note that this has no effect on idle clients or people who are AFK \
+This has no effect on idle clients or people who are AFK \
 It will only affect people who are already disconnected \
 and just haven't told the server
 ```
@@ -59,6 +59,15 @@ Amount of users with Opus support needed to force Opus usage in percent \
 ```
 -e OPUSTHRESHOLD=0
 ```
+Maximum depth of channel nesting
+```
+-e CHANNELNESTINGLIMIT=20
+```
+Maximum number of channels per server \
+0 = unlimited
+```
+-e CHANNELCOUNTLIMIT=500
+```
 
 ## Volume Options
 Save your mumble-server.sqlite in /data
@@ -67,7 +76,7 @@ Save your mumble-server.sqlite in /data
 ```
 
 ## Run the image
-Run the image
+Run the image with unrestricted opus support
 ```
 docker run -d \
 -e "WELCOMETEXT=Mumble Server Hosted by example.com" \
