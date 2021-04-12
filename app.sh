@@ -58,6 +58,10 @@ if [ "${SENDVERSION}" == "false" ]; then
   sed -e "s/^;sendversion=True$/sendversion=false/" -i /etc/mumble-server.ini
 fi
 
+if [ -n "${SUGGESTVERSION}" ]; then
+  sed -e "s/^;suggestVersion=$/suggestVersion=${SUGGESTVERSION}/" -i /etc/mumble-server.ini
+fi
+
 # We force foreground mode to ensure that murmurd has a chance to close its database properly
 # docker logs mumble will show logs
 chown -R mumble-server.mumble-server /data

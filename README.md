@@ -76,6 +76,13 @@ If disabled, clients will not be sent information about the server version and O
 ```
 -e SENDVERSION=false
 ```
+You can set a recommended minimum version for your server \
+and clients will be notified in their log when they connect \
+if their client does not meet the minimum requirements \
+suggestVersion expects the version in the format X.X.X
+```
+-e SUGGESTVERSION=1.2.4
+```
 
 ## Volume Options
 Save your mumble-server.sqlite in /data
@@ -84,11 +91,12 @@ Save your mumble-server.sqlite in /data
 ```
 
 ## Run the image
-Run the image with unrestricted opus support
+Run the image with unrestricted opus support and suggested version
 ```
 docker run -d \
 -e "WELCOMETEXT=Mumble Server Hosted by example.com" \
--e "OPUSTHRESHOLD=0" \
+-e OPUSTHRESHOLD=0 \
+-e SUGGESTVERSION=1.2.4 \
 -p 172.17.0.1:64738:64738/tcp \
 -p 172.17.0.1:64738:64738/udp \
 -v /srv/docker/mumble-server/data:/data \
