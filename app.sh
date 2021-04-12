@@ -34,6 +34,10 @@ if [ -n "${USERSPERCHANNEL}" ]; then
   sed -e "s/^;usersperchannel=0$/usersperchannel=${USERSPERCHANNEL}/" -i /etc/mumble-server.ini
 fi
 
+if [ "${ALLOWPING}" == "false" ]; then
+  sed -e "s/^allowping=true$/allowping=false/" -i /etc/mumble-server.ini
+fi
+
 if [ -n "${OPUSTHRESHOLD}" ]; then
   sed -e "s/^;opusthreshold=100$/opusthreshold=${OPUSTHRESHOLD}/" -i /etc/mumble-server.ini
 fi

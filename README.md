@@ -13,31 +13,49 @@ docker build -t="fullaxx/mumble-server" github.com/Fullaxx/mumble-server
 ```
 
 ## Configuration Options
-Set the welcome text the clients will see when connecting
+Welcome message sent to clients when they connect
 ```
 -e "WELCOMETEXT=Mumble Server Hosted by example.com"
 ```
-Set a password for the server
+Password for unregistered users to join server
 ```
 -e 'PASSWORD=P@$$w0rd!#'
 ```
-Set the bandwidth per client
+Maximum bandwidth (in bits per second) clients are allowed to send speech at
 ```
 -e BANDWIDTH=56000
 ```
-Set a timeout for clients
+Murmur and Mumble are usually pretty good about cleaning up hung clients \
+but occasionally one will get stuck on the server \
+The timeout setting will cause a periodic check of all clients \
+who haven't communicated with the server in this many seconds \
+causing zombie clients to be disconnected
+Note that this has no effect on idle clients or people who are AFK \
+It will only affect people who are already disconnected \
+and just haven't told the server
 ```
 -e TIMEOUT=10
 ```
-Limit the total number of users that can be connected
+Maximum number of concurrent clients allowed
 ```
 -e USERS=50
 ```
-Limit the number of users in any channel
+Where users sets a blanket limit on the number of clients per virtual server \
+usersperchannel sets a limit on the number per channel \
+The default is 0 for no limit.
 ```
 -e USERSPERCHANNEL=20
 ```
-Set the opus threshhold
+By default murmur exposes the current/maximum user count \
+and the server's maximum bandwidth per client to unauthenticated users \
+In the Mumble client, this information is shown in the Connect dialog \
+Setting ALLOWPING=false will turn off this behavior
+```
+-e ALLOWPING=false
+```
+Amount of users with Opus support needed to force Opus usage in percent \
+0 = Always enable Opus \
+100 = enable Opus if it's supported by all clients
 ```
 -e OPUSTHRESHOLD=0
 ```
