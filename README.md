@@ -68,6 +68,10 @@ Maximum number of channels per server \
 ```
 -e CHANNELCOUNTLIMIT=500
 ```
+Only clients which have a registered certificate are allowed to connect
+```
+-e CERTREQUIRED=true
+```
 
 ## Volume Options
 Save your mumble-server.sqlite in /data
