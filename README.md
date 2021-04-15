@@ -122,3 +122,11 @@ docker run -d \
 -v /srv/docker/mumble-server/data:/data \
 fullaxx/mumble-server
 ```
+
+## The SuperUser Password
+Once you have mumble running you will either get or set the SuperUser Password for admin functionality
+```
+docker logs <CONTAINER_ID> 2>&1 | grep SuperUser
+<or>
+docker exec -it <CONTAINER_ID> murmurd -ini /etc/mumble-server.ini -supw 'My$uper$ecureM%mbleP@ssw0rd'
+```
